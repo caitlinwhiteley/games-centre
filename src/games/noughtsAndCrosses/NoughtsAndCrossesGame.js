@@ -7,6 +7,7 @@ import {
   checkForVerticalWinner,
   checkForDiagonalWinner
 } from "./checkForWinner";
+import ReturnButton from "../ReturnButton";
 
 const NoughtsAndCrossesGame = () => {
   const [values, setValues] = useState([
@@ -89,6 +90,7 @@ const NoughtsAndCrossesGame = () => {
 
   return (
     <div className="page">
+      <ReturnButton />
       <div className="container-noughts">
         <Modal closeModal={closeModal} show={showModal} onClick={closeModal}>
           {whosGo === "O" && <p>Crosses wins!</p>}
@@ -97,7 +99,9 @@ const NoughtsAndCrossesGame = () => {
           {/* <p>{winner} wins</p> */}
         </Modal>
 
-        <h2 style={{ color: color }}>{whosGo}'s Go</h2>
+        <h2 className="h2-noughts" style={{ color: color }}>
+          {whosGo}'s Go
+        </h2>
         <div className="grid">
           {values.map((value, index) => (
             <div

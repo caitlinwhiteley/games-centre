@@ -1,15 +1,18 @@
 import React from "react";
 import "./App.css";
+import { Router } from "@reach/router";
+
 import DiceGame from "./games/diceGame/DiceGame";
 import NoughtsAndCrossesGame from "./games/noughtsAndCrosses/NoughtsAndCrossesGame";
+import HomePage from "./HomePage";
 
 function App() {
   return (
-    <div>
-      {/* <h1>GAME CENTRE</h1> */}
-      {/* <DiceGame /> */}
-      <NoughtsAndCrossesGame />
-    </div>
+    <Router>
+      <HomePage path="/" />
+      <DiceGame path="/DiceGame" />
+      <NoughtsAndCrossesGame path="/NoughtsAndCrosses" />
+    </Router>
   );
 }
 

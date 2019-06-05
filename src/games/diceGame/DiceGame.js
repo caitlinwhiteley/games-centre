@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PlayerCard from "./PlayerCard";
 import "./diceGame.css";
+import ReturnButton from "../ReturnButton";
 //import Dice from "./Dice";
 
 const DiceGame = () => {
@@ -55,6 +56,7 @@ const DiceGame = () => {
 
   return (
     <div className="container-row container-dice">
+      <ReturnButton />
       <PlayerCard
         currentScore={currentScore}
         totalScore={totalScoreOne}

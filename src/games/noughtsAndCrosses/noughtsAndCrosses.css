@@ -1,4 +1,4 @@
-h2 {
+.h2-noughts {
   text-shadow: 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white;
 }
 
@@ -43,6 +43,7 @@ h2 {
 }
 
 .button-noughts:hover {
-  background-color: rgba(255, 0, 255, 0.6);
+  background-color: rgba(255, 0, 255);
   cursor: pointer;
+  color: white;
 }
