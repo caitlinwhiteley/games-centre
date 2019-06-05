@@ -1,0 +1,53 @@
+.container-dice {
+  background-color: rgb(33, 126, 87);
+  height: 100vh;
+}
+
+.container-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-card {
+  border: solid white 5px;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 200px;
+  margin: 100px;
+  padding: 40px;
+}
+
+.button-area {
+  margin: 0;
+}
+
+.dice {
+  border: solid black 2px;
+  border-radius: 5px;
+}
+
+i {
+  margin: 10px;
+}
+
+.button-dice {
+  width: 80px;
+  height: 40px;
+  border: white solid 2px;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  margin: 10px 0;
+}
+
+.button-dice:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: black;
+}

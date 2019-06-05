@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Monoton&display=swap");
+
+.box-area {
+  font-size: 4em;
+  font-family: "Monoton";
+  display: block;
+  margin: auto;
+}

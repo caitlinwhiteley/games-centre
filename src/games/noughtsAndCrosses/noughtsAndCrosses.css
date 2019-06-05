@@ -1,0 +1,48 @@
+h2 {
+  text-shadow: 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white;
+}
+
+.grid {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  border: magenta solid 5px;
+  background-color: rgb(255, 255, 255, 1);
+  border-radius: 15px;
+}
+
+.grid-square {
+  border: black solid 2px;
+  height: 100px;
+}
+
+.container-noughts {
+  display: block;
+  margin: auto;
+  width: 310px;
+}
+
+.container-noughts > * {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.page {
+  background-image: url("./noughtcrossbgd.jpg");
+  height: 100vh;
+}
+
+.button-noughts {
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: solid magenta 2px;
+  display: block;
+  margin: 20px auto;
+}
+
+.button-noughts:hover {
+  background-color: rgba(255, 0, 255, 0.6);
+  cursor: pointer;
+}
