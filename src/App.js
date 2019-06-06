@@ -4,7 +4,7 @@ import { Router } from "@reach/router";
 
 import DiceGame from "./games/diceGame/DiceGame";
 import NoughtsAndCrossesGame from "./games/noughtsAndCrosses/NoughtsAndCrossesGame";
-import HomePage from "./HomePage";
+import HomePage from "./games/homePage/HomePage";
 
 function App() {
   return (

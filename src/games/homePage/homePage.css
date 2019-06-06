@@ -1,0 +1,40 @@
+.games-container {
+  position: relative;
+}
+
+.game-link {
+  width: 200px;
+  height: 200px;
+  border: black solid 6px;
+  border-radius: 50%;
+  margin: 300px 0;
+  left: -50%;
+  box-sizing: border-box;
+}
+
+.game-link:hover {
+  border: black solid 12px;
+}
+
+.game-link > div {
+  margin: 40% 0;
+  text-align: center;
+  text-shadow: 0 0 0.2em black, 0 0 0.2em black, 0 0 0.2em black;
+}
+
+.div-games-heading {
+  position: fixed;
+  top: 150px;
+  left: 50%;
+}
+
+.games-heading {
+  position: relative;
+  left: -50%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

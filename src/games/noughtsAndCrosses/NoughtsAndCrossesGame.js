@@ -7,7 +7,7 @@ import {
   checkForVerticalWinner,
   checkForDiagonalWinner
 } from "./checkForWinner";
-import ReturnButton from "../ReturnButton";
+import ReturnButton from "../components/ReturnButton";
 
 const NoughtsAndCrossesGame = () => {
   const [values, setValues] = useState([

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PlayerCard from "./PlayerCard";
 import "./diceGame.css";
-import ReturnButton from "../ReturnButton";
+import ReturnButton from "../components/ReturnButton";
 //import Dice from "./Dice";
 
 const DiceGame = () => {
