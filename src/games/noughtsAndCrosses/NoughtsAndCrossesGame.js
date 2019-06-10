@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./noughtsAndCrosses.css";
 import BoxArea from "./BoxArea";
-import Modal from "./Modal";
+import Modal from "../../components/Modal";
 import {
   checkForHorizontalWinner,
   checkForVerticalWinner,
@@ -92,7 +92,13 @@ const NoughtsAndCrossesGame = () => {
     <div className="page">
       <ReturnButton />
       <div className="container-noughts">
-        <Modal closeModal={closeModal} show={showModal} onClick={closeModal}>
+        <Modal
+          closeModal={closeModal}
+          show={showModal}
+          onClick={closeModal}
+          buttonValue={"New Game"}
+          bgdColor={"rgba(255, 0, 255, 0.6)"}
+        >
           {whosGo === "O" && <p>Crosses wins!</p>}
           {whosGo === "X" && <p>Noughts wins!</p>}
           {whosGo === null && <p>No one wins :(</p>}

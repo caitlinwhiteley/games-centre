@@ -16,6 +16,7 @@ const SpaceBarGame = () => {
   const [disabled, setDisabled] = useState(false);
 
   const timeOfGame = 3;
+  let textInput = null;
 
   const openModal = () => {
     setDisabled(true);
@@ -23,7 +24,6 @@ const SpaceBarGame = () => {
   };
 
   const closeModal = () => {
-    //reset();
     swapPlayers();
     setShowModal(false);
     setDisabled(false);
@@ -53,6 +53,7 @@ const SpaceBarGame = () => {
   }, []);
 
   useEffect(() => {
+    textInput.focus();
     if (secondsLeft > 0) {
       setTimeout(() => {
         setSecondsLeft(secondsLeft - 1);
@@ -62,10 +63,8 @@ const SpaceBarGame = () => {
       if (playersGo === "Player 1") {
         setPlayerOneScore(playerScore);
         openModal();
-        // open model saying next players go;
-      } else {
+      } else if (playersGo === "Player 2") {
         setPlayerTwoScore(playerScore);
-        //reset();
       }
     }
   }, [secondsLeft, playerScore, reset, playersGo]);
@@ -79,13 +78,14 @@ const SpaceBarGame = () => {
         show={showModal}
         onClick={closeModal}
         buttonValue={"Next"}
+        bdgColor={"rgba(68, 216, 159, 1)"}
       >
         Player 2's go
       </Modal>
 
       <h1>Space Bar Game</h1>
       <h2>{playersGo}</h2>
-      <p>The timer will start once you hit the space bar</p>
+      <p>Press the space bar to start</p>
       {secondsLeft === 0 ? (
         <p>Press enter to reset</p>
       ) : (
@@ -95,21 +95,21 @@ const SpaceBarGame = () => {
       <input
         autoFocus={true}
         onKeyUp={startGo}
-        value="Press the space bar as many times as possible"
+        value={playerScore}
         disabled={disabled}
         readOnly
+        ref={input => {
+          textInput = input;
+        }}
       />
 
-      {finalScore !== 0 ? (
+      {/* {finalScore !== 0 ? (
         <p>FINAL SCORE: {finalScore}</p>
       ) : (
         <p>Score: {playerScore}</p>
-      )}
-      {/* {playerOneScore && <p>Player 1 score: {playerOneScore}</p>}
-      {playerTwoScore && <p>Player 2 score: {playerTwoScore}</p>} */}
-      <p>
-        P1: {playerOneScore}, p2: {playerTwoScore}
-      </p>
+      )} */}
+      {playerOneScore && <p>Player 1 score: {playerOneScore}</p>}
+      {playerTwoScore && <p>Player 2 score: {playerTwoScore}</p>}
     </div>
   );
 };

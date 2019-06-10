@@ -31,19 +31,3 @@
   background-image: url("./noughtcrossbgd.jpg");
   height: 100vh;
 }
-
-.button-noughts {
-  padding: 10px;
-  margin-bottom: 15px;
-  font-size: 15px;
-  border-radius: 5px;
-  border: solid magenta 2px;
-  display: block;
-  margin: 20px auto;
-}
-
-.button-noughts:hover {
-  background-color: rgba(255, 0, 255);
-  cursor: pointer;
-  color: white;
-}
