@@ -12,3 +12,7 @@ input {
   font-size: 3em;
   text-align: center;
 }
+
+.winner-result {
+  font-size: 2em;
+}

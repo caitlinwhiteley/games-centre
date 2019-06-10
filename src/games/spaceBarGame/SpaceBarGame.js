@@ -3,17 +3,15 @@ import "./spaceBarGame.css";
 import ReturnButton from "../../components/ReturnButton";
 import Modal from "../../components/Modal";
 
-// async often messes up the scores
-
 const SpaceBarGame = () => {
   const [playerScore, setPlayerScore] = useState(0);
   const [secondsLeft, setSecondsLeft] = useState(null);
-  const [finalScore, setFinalScore] = useState(0);
   const [playersGo, setPlayersGo] = useState("Player 1");
   const [playerOneScore, setPlayerOneScore] = useState();
   const [playerTwoScore, setPlayerTwoScore] = useState();
   const [showModal, setShowModal] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [winner, setWinner] = useState();
 
   const timeOfGame = 3;
   let textInput = null;
@@ -39,18 +37,22 @@ const SpaceBarGame = () => {
   const swapPlayers = () => {
     setPlayerScore(0);
     setSecondsLeft(null);
-    setFinalScore(0);
     setPlayersGo("Player 2");
   };
 
   const reset = useCallback(() => {
     setPlayerScore(0);
     setSecondsLeft(null);
-    setFinalScore(0);
     setPlayersGo("Player 1");
     setPlayerOneScore();
     setPlayerTwoScore();
+    setWinner();
   }, []);
+
+  const chooseWinner = () => {
+    if (playerTwoScore > playerOneScore) setWinner("Player 2");
+    else if (playerOneScore > playerTwoScore) setWinner("Player 1");
+  };
 
   useEffect(() => {
     textInput.focus();
@@ -59,7 +61,6 @@ const SpaceBarGame = () => {
         setSecondsLeft(secondsLeft - 1);
       }, 1000);
     } else if (secondsLeft === 0) {
-      setFinalScore(playerScore);
       if (playersGo === "Player 1") {
         setPlayerOneScore(playerScore);
         openModal();
@@ -67,7 +68,10 @@ const SpaceBarGame = () => {
         setPlayerTwoScore(playerScore);
       }
     }
-  }, [secondsLeft, playerScore, reset, playersGo]);
+    if (playerTwoScore > 0) {
+      chooseWinner();
+    }
+  }, [secondsLeft, playerScore, reset, playersGo, playerTwoScore]);
 
   return (
     <div className="space-bar-container">
@@ -103,13 +107,10 @@ const SpaceBarGame = () => {
         }}
       />
 
-      {/* {finalScore !== 0 ? (
-        <p>FINAL SCORE: {finalScore}</p>
-      ) : (
-        <p>Score: {playerScore}</p>
-      )} */}
       {playerOneScore && <p>Player 1 score: {playerOneScore}</p>}
       {playerTwoScore && <p>Player 2 score: {playerTwoScore}</p>}
+
+      {winner && <p className="winner-result">The winner is {winner}!!</p>}
     </div>
   );
 };
