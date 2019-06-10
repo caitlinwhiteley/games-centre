@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./spaceBarGame.css";
+import ReturnButton from "../../components/ReturnButton";
+import Modal from "../../components/Modal";
+
+// async often messes up the scores
 
 const SpaceBarGame = () => {
   const [playerScore, setPlayerScore] = useState(0);
@@ -8,7 +12,22 @@ const SpaceBarGame = () => {
   const [playersGo, setPlayersGo] = useState("Player 1");
   const [playerOneScore, setPlayerOneScore] = useState();
   const [playerTwoScore, setPlayerTwoScore] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+
   const timeOfGame = 3;
+
+  const openModal = () => {
+    setDisabled(true);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    //reset();
+    swapPlayers();
+    setShowModal(false);
+    setDisabled(false);
+  };
 
   const startGo = e => {
     if (e.keyCode === 32) {
@@ -24,11 +43,14 @@ const SpaceBarGame = () => {
     setPlayersGo("Player 2");
   };
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setPlayerScore(0);
     setSecondsLeft(null);
     setFinalScore(0);
-  };
+    setPlayersGo("Player 1");
+    setPlayerOneScore();
+    setPlayerTwoScore();
+  }, []);
 
   useEffect(() => {
     if (secondsLeft > 0) {
@@ -39,16 +61,28 @@ const SpaceBarGame = () => {
       setFinalScore(playerScore);
       if (playersGo === "Player 1") {
         setPlayerOneScore(playerScore);
-        swapPlayers();
+        openModal();
+        // open model saying next players go;
       } else {
         setPlayerTwoScore(playerScore);
-        reset();
+        //reset();
       }
     }
   }, [secondsLeft, playerScore, reset, playersGo]);
 
   return (
     <div className="space-bar-container">
+      <ReturnButton />
+
+      <Modal
+        closeModal={closeModal}
+        show={showModal}
+        onClick={closeModal}
+        buttonValue={"Next"}
+      >
+        Player 2's go
+      </Modal>
+
       <h1>Space Bar Game</h1>
       <h2>{playersGo}</h2>
       <p>The timer will start once you hit the space bar</p>
@@ -62,6 +96,8 @@ const SpaceBarGame = () => {
         autoFocus={true}
         onKeyUp={startGo}
         value="Press the space bar as many times as possible"
+        disabled={disabled}
+        readOnly
       />
 
       {finalScore !== 0 ? (
