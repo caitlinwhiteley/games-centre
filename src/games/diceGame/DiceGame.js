@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PlayerCard from "./PlayerCard";
 import "./diceGame.css";
-import ReturnButton from "../components/ReturnButton";
+import ReturnButton from "../../components/ReturnButton";
 //import Dice from "./Dice";
 
 const DiceGame = () => {
-  const winningScore = 19;
+  const winningScore = 100;
 
   const [winner, setWinner] = useState();
   const [gameInProcess, setGameInProcess] = useState(false);

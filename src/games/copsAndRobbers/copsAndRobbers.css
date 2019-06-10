@@ -1,0 +1,19 @@
+.container-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.container-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.cops-area,
+.robbers-area {
+  width: 50%;
+  text-align: center;
+}
+
+/* .robbers-area {
+  width: 50%;
+} */

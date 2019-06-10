@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "@reach/router";
 import "./homePage.css";
 
+// create gloabal modal component for winner of game
+
 const HomePage = () => {
   return (
     <div className="games-container">
@@ -21,7 +23,7 @@ const HomePage = () => {
           <div>Game 1</div>
         </Link>
         <Link
-          to="/"
+          to="/CopsAndRobbers"
           className="game-link"
           style={{
             color: "white",
@@ -29,7 +31,7 @@ const HomePage = () => {
             backgroundColor: "orange"
           }}
         >
-          <div>Game 2</div>
+          <div>Cops and Robbers</div>
         </Link>
         <Link
           to="/"
@@ -43,7 +45,7 @@ const HomePage = () => {
           <div>Game 3</div>
         </Link>
         <Link
-          to="/"
+          to="/SpaceBarGame"
           className="game-link"
           style={{
             color: "white",
@@ -51,7 +53,7 @@ const HomePage = () => {
             backgroundColor: "green"
           }}
         >
-          <div>Game 4</div>
+          <div>Space Bar Game</div>
         </Link>
         <Link
           to="/DiceGame"
